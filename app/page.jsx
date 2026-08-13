@@ -12,6 +12,7 @@ export default function HomePage() {
         <img data-doodle data-float="2" data-parallax="8" className="doodle hero-ball" data-hero-depth="2" src="/doodles/ball.svg" alt="" />
         <img data-doodle data-parallax="14" className="doodle hero-rings" data-hero-depth="1" src="/doodles/rings.svg" alt="" />
         <img data-doodle data-parallax="-8" className="doodle hero-cone" data-hero-depth="2" src="/doodles/cone.svg" alt="" />
+        <img data-doodle data-float="1" data-parallax="-6" className="doodle para-flag hero-para-flag" data-hero-depth="1" src="/doodles/para-flag.png" alt="" />
 
         <div className="hero-copy" data-hero-copy>
           <span className="eyebrow-sticker">Personal Kids</span>

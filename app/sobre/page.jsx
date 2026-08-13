@@ -7,7 +7,7 @@ export default function SobrePage() {
     <>
       <section className="subhero page-ambient about-ambient">
         <div className="notebook-lines" aria-hidden="true" />
-        <img className="doodle about-flag" src="/doodles/flag.svg" alt="" />
+        <img className="doodle para-flag about-flag" src="/doodles/para-flag.png" alt="" />
         <img className="doodle about-star" src="/doodles/star.svg" alt="" />
         <div className="subhero-copy">
           <span className="eyebrow-sticker blue">Quem sou eu?</span>

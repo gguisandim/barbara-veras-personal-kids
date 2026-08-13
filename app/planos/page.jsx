@@ -9,6 +9,7 @@ export default function PlanosPage() {
       <section className="subhero page-ambient plans-ambient">
         <img className="doodle plans-cone" src="/doodles/cone.svg" alt="" />
         <img className="doodle plans-star" src="/doodles/star.svg" alt="" />
+        <img className="doodle para-flag plans-flag" data-parallax="-5" src="/doodles/para-flag.png" alt="" />
         <div className="subhero-copy wide">
           <span className="eyebrow-sticker blue">Planos</span>
           <h1>Escolha o ritmo.<br /><em>O movimento continua.</em></h1>

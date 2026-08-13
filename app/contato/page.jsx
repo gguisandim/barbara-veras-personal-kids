@@ -6,7 +6,7 @@ export default function ContatoPage() {
   return (
     <section className="contact-page page-ambient contact-ambient">
       <img className="doodle contact-rings" data-parallax="12" src="/doodles/rings.svg" alt="" />
-      <img className="doodle contact-flag" data-parallax="-10" src="/doodles/flag.svg" alt="" />
+      <img className="doodle para-flag contact-flag" data-parallax="-10" src="/doodles/para-flag.png" alt="" />
       <img className="doodle contact-ball" data-parallax="8" src="/doodles/ball.svg" alt="" />
       <div className="contact-copy">
         <Reveal>

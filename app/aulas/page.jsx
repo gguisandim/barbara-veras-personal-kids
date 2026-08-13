@@ -12,6 +12,7 @@ export default function AulasPage() {
       <section className="subhero page-ambient classes-ambient">
         <img className="doodle classes-rings" data-parallax="12" src="/doodles/rings.svg" alt="" />
         <img className="doodle classes-cone" data-parallax="-8" src="/doodles/cone.svg" alt="" />
+        <img className="doodle para-flag classes-flag" data-parallax="6" src="/doodles/para-flag.png" alt="" />
         <div className="subhero-copy wide">
           <span className="eyebrow-sticker">Como funcionam as aulas?</span>
           <h1>Uma pista de desafios feita para <em>cada criança.</em></h1>

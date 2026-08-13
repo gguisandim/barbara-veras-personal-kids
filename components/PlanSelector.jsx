@@ -102,16 +102,25 @@ export default function PlanSelector() {
         </div>
 
         <div className={`plan-price-board ${plan.prices.length === 2 ? 'has-two' : ''}`}>
-          {plan.prices.map(([name, price, suffix], index) => (
-            <article className={`plan-price-card price-${index + 1}`} key={name}>
-              <div className="plan-price-top">
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <b>{name}</b>
-              </div>
-              <strong>{price}</strong>
-              <small>{suffix || 'valor do plano'}</small>
-            </article>
-          ))}
+          {plan.prices.map(([name, price, suffix], index) => {
+            const [currency, amount] = price.split(' ');
+
+            return (
+              <article className={`plan-price-card price-${index + 1}`} key={name}>
+                <div className="plan-price-top">
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <b>{name}</b>
+                </div>
+
+                <div className="plan-price-value" aria-label={price}>
+                  <span>{currency}</span>
+                  <strong>{amount}</strong>
+                </div>
+
+                <small>{suffix || 'valor do plano'}</small>
+              </article>
+            );
+          })}
         </div>
       </div>
     </div>

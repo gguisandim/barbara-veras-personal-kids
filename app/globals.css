@@ -254,6 +254,8 @@ main { min-height: 100vh; }
 .contact-flag { width: 160px; right: 1%; top: 95px; }
 .contact-ball { width: 115px; left: 50%; top: 112px; }
 
+
+
 @media (max-width: 1080px) {
   .site-header { gap: 10px; }
   .brand { min-width: auto; }
@@ -1442,6 +1444,8 @@ body { overscroll-behavior-y: none; }
 .assistant-actions a:first-child { background: #fff; }
 .assistant-actions a:last-child { background: var(--ink); color: #fff; }
 
+
+
 @media (max-width: 1080px) {
   .journey-step { width: 27%; }
   .journey-step.step-2 { left: 25%; }
@@ -1550,4 +1554,275 @@ body { overscroll-behavior-y: none; }
   .plan-price-card > strong { font-size: clamp(3rem, 15vw, 4rem); }
   .assistant-toggle strong { display: none; }
   .assistant-toggle { padding: 7px; }
+}
+
+/* PLANOS · V5 — composição responsiva e valores sem recorte */
+.plan-result {
+  grid-template-columns: minmax(320px, 360px) minmax(0, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+.plan-result-copy {
+  padding: 30px;
+}
+
+.plan-result-title h3 {
+  font-size: clamp(3.6rem, 5vw, 5.4rem);
+  line-height: .84;
+}
+
+.plan-price-board {
+  gap: 14px;
+  align-items: stretch;
+}
+
+.plan-price-card {
+  min-height: 360px;
+  padding: 22px 20px 20px;
+  justify-content: initial;
+  gap: 18px;
+}
+
+.plan-price-top {
+  min-width: 0;
+  align-items: center;
+}
+
+.plan-price-top b {
+  min-width: 0;
+  text-align: right;
+  font-size: clamp(.82rem, 1vw, 1rem);
+}
+
+.plan-price-value {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-width: 0;
+  margin: auto 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: clamp(5px, .55vw, 9px);
+  white-space: nowrap;
+}
+
+.plan-price-value > span {
+  flex: 0 0 auto;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(1.75rem, 2vw, 2.45rem);
+  line-height: .85;
+  font-weight: 400;
+}
+
+.plan-price-value > strong {
+  min-width: 0;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(3rem, 3.9vw, 4.55rem);
+  line-height: .82;
+  font-weight: 400;
+  letter-spacing: -.035em;
+}
+
+.plan-price-card > small {
+  margin-top: auto;
+  align-self: flex-end;
+  text-align: right;
+}
+
+/* neutraliza a regra antiga que aplicava o tamanho ao strong direto do card */
+.plan-price-card > strong { display: none; }
+
+@media (max-width: 1180px) {
+  .plan-result {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-result-copy {
+    min-height: 0;
+  }
+
+  .plan-result-copy .button {
+    margin-top: 24px;
+  }
+
+  .plan-price-card {
+    min-height: 260px;
+  }
+
+  .plan-price-value > strong {
+    font-size: clamp(3.2rem, 7vw, 5rem);
+  }
+}
+
+@media (max-width: 820px) {
+  .plan-choices {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .plan-price-board,
+  .plan-price-board.has-two {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .plan-price-card {
+    min-height: 180px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+    align-items: end;
+    padding: 18px 20px;
+  }
+
+  .plan-price-top {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .plan-price-value {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: auto;
+    margin: 22px 0 0;
+    justify-self: end;
+    justify-content: flex-end;
+  }
+
+  .plan-price-value > span {
+    font-size: clamp(1.55rem, 4.4vw, 2.15rem);
+  }
+
+  .plan-price-value > strong {
+    font-size: clamp(3.1rem, 10vw, 4.6rem);
+  }
+
+  .plan-price-card > small {
+    position: absolute;
+    left: 20px;
+    bottom: 18px;
+    align-self: auto;
+    max-width: 110px;
+    text-align: left;
+  }
+}
+
+@media (max-width: 680px) {
+  .plan-finder-head {
+    gap: 10px;
+  }
+
+  .plan-choices fieldset {
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .plan-choices legend {
+    font-size: .9rem;
+  }
+
+  .choice-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .choice-row button {
+    min-height: 50px;
+    padding: 8px 7px;
+    font-size: .88rem;
+    line-height: 1.15;
+  }
+
+  .plan-result-copy {
+    padding: 20px;
+  }
+
+  .plan-result-title {
+    margin-bottom: 15px;
+  }
+
+  .plan-result-title h3 {
+    font-size: clamp(3rem, 15vw, 4.15rem);
+  }
+
+  .plan-result-title strong {
+    margin-top: 8px;
+    padding: 6px 9px;
+    font-size: .84rem;
+  }
+
+  .plan-result-copy > p {
+    margin: 5px 0 0;
+    font-size: .92rem;
+    line-height: 1.52;
+  }
+
+  .plan-price-card {
+    min-height: 156px;
+    padding: 16px;
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+
+  .plan-price-card > small {
+    left: 16px;
+    bottom: 15px;
+    font-size: .61rem;
+  }
+
+  .plan-price-value {
+    margin-top: 18px;
+  }
+
+  .plan-price-value > span {
+    font-size: clamp(1.35rem, 5.5vw, 1.8rem);
+  }
+
+  .plan-price-value > strong {
+    font-size: clamp(2.75rem, 12vw, 4rem);
+  }
+}
+
+@media (max-width: 390px) {
+  .choice-row button {
+    font-size: .8rem;
+  }
+
+  .plan-price-value > strong {
+    font-size: clamp(2.55rem, 11.5vw, 3.5rem);
+  }
+}
+
+
+/* PARÁ FLAG — transparent custom doodle (V6) */
+.para-flag {
+  object-fit: contain;
+  filter: drop-shadow(3px 4px 0 rgba(37, 37, 37, .12));
+  transform-origin: 18% 82%;
+  pointer-events: none;
+}
+.hero-para-flag { width: 132px; left: 3.5%; bottom: 8%; transform: rotate(-7deg); opacity: .96; }
+.about-flag { width: 148px; right: 1.5%; top: 86px; transform: rotate(7deg); }
+.classes-flag { width: 126px; right: 2.5%; bottom: 7%; transform: rotate(8deg); opacity: .9; }
+.plans-flag { width: 118px; right: 4.5%; top: 102px; transform: rotate(-6deg); opacity: .92; }
+.contact-flag { width: 148px; right: 1.5%; top: 94px; transform: rotate(7deg); }
+
+@media (max-width: 820px) {
+  .hero-para-flag { width: 92px; left: -6px; bottom: 8px; opacity: .8; }
+  .about-flag { width: 92px; right: -16px; top: 82px; opacity: .72; }
+  .classes-flag { width: 88px; right: -18px; bottom: 12px; opacity: .68; }
+  .plans-flag { width: 82px; right: -14px; top: 88px; opacity: .68; }
+  .contact-flag { width: 92px; right: -18px; top: 82px; opacity: .72; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .para-flag { animation: paraFlagWave 4.8s ease-in-out infinite; }
+  .hero-para-flag, .plans-flag { animation-delay: -.9s; }
+  .classes-flag, .contact-flag { animation-delay: -2.1s; }
+}
+
+@keyframes paraFlagWave {
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  50% { translate: 0 -5px; rotate: 1.5deg; }
 }
