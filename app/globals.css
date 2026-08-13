@@ -1313,7 +1313,9 @@ body { overscroll-behavior-y: none; }
   background: linear-gradient(to top, rgba(0,0,0,.28), transparent 42%);
   pointer-events: none;
 }
-.activity-photo-v4 img { width: 100%; height: 100%; min-height: 560px; object-fit: cover; object-position: center 34%; }
+.activity-photo-v4 img { width: 100%; height: 100%; min-height: 560px; object-fit: cover; object-position: var(--activity-photo-position, center 34%); }
+.activity-feature-v4.feature-3 { --activity-photo-position: center 36%; }
+.activity-feature-v4.feature-5 { --activity-photo-position: center 52%; }
 .activity-photo-tag {
   position: absolute;
   z-index: 2;
@@ -1509,8 +1511,10 @@ body { overscroll-behavior-y: none; }
   .activity-stations-v4::-webkit-scrollbar { display: none; }
   .activity-stations-v4 button { flex: 0 0 min(79vw, 285px); min-height: 68px; scroll-snap-align: center; }
   .activity-feature-v4 { box-shadow: 6px 6px 0 var(--ink); }
-  .activity-photo-v4, .activity-photo-v4 img { height: 270px; min-height: 270px; }
-  .activity-photo-v4 img { object-position: center 30%; }
+  .activity-photo-v4, .activity-photo-v4 img { height: 300px; min-height: 300px; }
+  .activity-photo-v4 img { object-position: var(--activity-photo-position-mobile, var(--activity-photo-position, center 30%)); }
+  .activity-feature-v4.feature-3 { --activity-photo-position-mobile: center 42%; }
+  .activity-feature-v4.feature-5 { --activity-photo-position-mobile: center 64%; }
   .activity-photo-index { width: 53px; height: 53px; top: 13px; right: 13px; font-size: 1.45rem; }
   .activity-photo-tag { left: 13px; bottom: 13px; }
   .activity-copy-v4 { min-height: 0; padding: 29px 21px 26px; }
@@ -1548,7 +1552,9 @@ body { overscroll-behavior-y: none; }
   .hero-visual { min-height: 410px; }
   .photo-frame-main img { height: 360px; }
   .journey-step p { font-size: .73rem; }
-  .activity-photo-v4, .activity-photo-v4 img { height: 238px; min-height: 238px; }
+  .activity-photo-v4, .activity-photo-v4 img { height: 268px; min-height: 268px; }
+  .activity-feature-v4.feature-3 { --activity-photo-position-mobile: center 40%; }
+  .activity-feature-v4.feature-5 { --activity-photo-position-mobile: center 66%; }
   .activity-copy-v4 h3 { font-size: clamp(2.45rem, 12vw, 3.45rem); }
   .plan-result-title h3 { font-size: clamp(3rem, 15vw, 4rem); }
   .plan-price-card > strong { font-size: clamp(3rem, 15vw, 4rem); }
