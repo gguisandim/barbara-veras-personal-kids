@@ -32,7 +32,7 @@ export default function PageBridge({
             >
               Falar no WhatsApp ↗
             </a>
-            <Link className="text-link" href="/">Voltar ao início <span>↺</span></Link>
+            <Link className="text-link" href="/" scroll={true}>Voltar ao início <span>↺</span></Link>
           </div>
           <img className="page-bridge-flag" src="/doodles/para-flag.png" alt="" />
         </div>
@@ -42,7 +42,7 @@ export default function PageBridge({
 
   return (
     <section className="page-bridge-wrap section-wrap" data-scroll-pop aria-label={`Próxima página: ${title}`}>
-      <Link className={`page-bridge page-bridge-${accent}`} href={href}>
+      <Link className={`page-bridge page-bridge-${accent}`} href={href} scroll={true}>
         <div className="page-bridge-meta">
           <span>{step} / 05</span>
           <b>Próxima página · {nextStep} / 05</b>
