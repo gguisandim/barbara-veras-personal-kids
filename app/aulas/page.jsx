@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 import ActivityCircuit from '@/components/ActivityCircuit';
+import PageBridge from '@/components/PageBridge';
 
 export const metadata = { title: 'Aulas' };
 
@@ -51,13 +51,14 @@ export default function AulasPage() {
         <ActivityCircuit />
       </section>
 
-      <section className="section-wrap classes-cta" data-scroll-pop>
-        <div>
-          <span>Próxima parada</span>
-          <h2>Veja os planos individuais e em dupla.</h2>
-        </div>
-        <Link className="button button-dark" data-magnetic href="/planos">Ver planos →</Link>
-      </section>
+      <PageBridge
+        step="03"
+        nextStep="04"
+        title="Encontre o melhor ritmo de aula"
+        copy="Compare as opções individuais e em dupla, com frequência de 1x ou 2x por semana."
+        href="/planos"
+        accent="dark"
+      />
     </>
   );
 }

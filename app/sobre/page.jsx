@@ -1,4 +1,5 @@
 import Reveal from '@/components/Reveal';
+import PageBridge from '@/components/PageBridge';
 
 export const metadata = { title: 'Sobre' };
 
@@ -48,6 +49,14 @@ export default function SobrePage() {
         </div>
       </section>
 
+      <PageBridge
+        step="02"
+        nextStep="03"
+        title="Veja como funcionam as aulas"
+        copy="Conheça as capacidades trabalhadas e explore cada atividade na prática."
+        href="/aulas"
+        accent="red"
+      />
     </>
   );
 }

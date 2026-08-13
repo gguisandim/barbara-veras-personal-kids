@@ -1,5 +1,6 @@
 import PlanSelector from '@/components/PlanSelector';
 import Reveal from '@/components/Reveal';
+import PageBridge from '@/components/PageBridge';
 
 export const metadata = { title: 'Planos' };
 
@@ -39,6 +40,14 @@ export default function PlanosPage() {
           <p>Atendimento exclusivo a domicílio para até 2 crianças, no mesmo local e horário.</p>
         </div>
       </section>
+      <PageBridge
+        step="04"
+        nextStep="05"
+        title="Vamos começar?"
+        copy="Chegue ao final do percurso e fale diretamente com a Bárbara."
+        href="/contato"
+        accent="blue"
+      />
     </>
   );
 }

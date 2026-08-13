@@ -1,9 +1,11 @@
 import Reveal from '@/components/Reveal';
+import PageBridge from '@/components/PageBridge';
 
 export const metadata = { title: 'Contato' };
 
 export default function ContatoPage() {
   return (
+    <>
     <section className="contact-page page-ambient contact-ambient">
       <img className="doodle contact-rings" data-parallax="12" src="/doodles/rings.svg" alt="" />
       <img className="doodle para-flag contact-flag" data-parallax="-10" src="/doodles/para-flag.png" alt="" />
@@ -33,5 +35,7 @@ export default function ContatoPage() {
         <div className="contact-signature"><strong>Bárbara Veras</strong><span>Personal Kids</span></div>
       </div>
     </section>
+    <PageBridge final />
+    </>
   );
 }

@@ -1832,3 +1832,324 @@ body { overscroll-behavior-y: none; }
   0%, 100% { translate: 0 0; rotate: 0deg; }
   50% { translate: 0 -5px; rotate: 1.5deg; }
 }
+
+/* =========================================================
+   V8 · MOBILE FIRST PASS + PERCURSO ENTRE PÁGINAS
+   ========================================================= */
+
+/* Ponte visual no fim de cada página */
+.page-bridge-wrap { margin-top: 34px; margin-bottom: 72px; }
+.page-bridge {
+  position: relative;
+  min-height: 310px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto 1fr;
+  gap: 18px 34px;
+  padding: clamp(28px, 4vw, 52px);
+  border: 3px solid var(--ink);
+  box-shadow: 9px 9px 0 var(--ink);
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+.page-bridge::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 340px;
+  height: 340px;
+  right: -150px;
+  bottom: -190px;
+  border: 46px solid rgba(39,39,39,.08);
+  border-radius: 50%;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1);
+}
+.page-bridge-blue { --bridge: var(--blue); }
+.page-bridge-red { --bridge: var(--red); }
+.page-bridge-dark { --bridge: var(--ink); }
+.page-bridge:not(.page-bridge-final)::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 11px;
+  background: var(--bridge);
+}
+.page-bridge-meta {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 16px;
+  border-bottom: 2px dashed rgba(39,39,39,.32);
+  font-size: .75rem;
+  font-weight: 1000;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.page-bridge-meta span { color: var(--bridge, var(--red)); }
+.page-bridge-copy { align-self: end; max-width: 850px; }
+.page-bridge-copy .kicker { margin-bottom: 10px; }
+.page-bridge-copy h2 {
+  margin: 0;
+  max-width: 850px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(3.2rem, 6vw, 6.4rem);
+  line-height: .9;
+  text-transform: uppercase;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+.page-bridge-copy p { max-width: 680px; margin: 16px 0 0; line-height: 1.55; font-weight: 700; }
+.page-bridge-arrow {
+  align-self: end;
+  width: 86px;
+  height: 86px;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--bridge);
+  color: #fff;
+  box-shadow: 5px 5px 0 var(--ink);
+  font-size: 2.7rem;
+  font-weight: 1000;
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+.page-bridge-flag {
+  position: absolute;
+  right: 9%;
+  top: 48px;
+  width: 96px;
+  opacity: .18;
+  transform: rotate(10deg);
+  pointer-events: none;
+}
+.page-bridge:hover::before { transform: scale(1.12) rotate(12deg); }
+.page-bridge:hover .page-bridge-arrow { transform: translate(4px,-4px) rotate(-5deg); box-shadow: 8px 8px 0 var(--ink); }
+.page-bridge-final { --bridge: var(--red); background: var(--ink); color: #fff; }
+.page-bridge-final .page-bridge-meta { border-color: rgba(255,255,255,.26); }
+.page-bridge-final .kicker { color: var(--red-soft); }
+.page-bridge-final .page-bridge-actions { align-self: end; display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
+.page-bridge-final .text-link { color: #fff; }
+.page-bridge-final .page-bridge-flag { opacity: .28; }
+
+/* Pequenas correções de legibilidade que também ajudam desktop/tablet. */
+.mini-profile-card h2 { overflow-wrap: anywhere; }
+.story-quote p { overflow-wrap: anywhere; }
+.contact-button strong { overflow-wrap: anywhere; }
+
+@media (max-width: 680px) {
+  html { scroll-padding-top: 82px; }
+  body { overscroll-behavior-y: auto; }
+  main { padding-bottom: 22px; }
+
+  /* Cabeçalho e espaçamento geral */
+  .site-header {
+    top: 8px;
+    width: calc(100% - 16px);
+    height: 60px;
+    padding: 7px 8px;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .brand img { width: 40px; height: 40px; }
+  .menu-button { width: 40px; height: 40px; }
+  .site-nav { top: 67px; left: 4px; right: 4px; }
+
+  .section-wrap { width: min(calc(100% - 24px), var(--max)); }
+  .section-heading { padding: 58px 0 28px; }
+  .section-heading p, .method-heading p, .story-copy p { font-size: .98rem; line-height: 1.55; }
+
+  /* HOME — menos altura vazia e melhor hierarquia */
+  .home-hero { padding: 100px 14px 48px; gap: 14px; }
+  .hero-copy p { font-size: .98rem; line-height: 1.5; }
+  .hero-actions { margin-top: 20px; gap: 16px; }
+  .hero-actions .button { width: 100%; }
+  .hero-actions .text-link { width: 100%; padding: 5px 2px; }
+  .hero-visual { min-height: 390px; }
+  .photo-frame-main { width: min(335px, 90%); padding: 8px; box-shadow: 7px 7px 0 var(--ink); }
+  .photo-frame-main img { height: 365px; }
+  .hero-badge { left: 1%; bottom: 4%; padding: 11px 12px; box-shadow: 4px 4px 0 var(--ink); }
+  .hero-badge strong { font-size: 1.06rem; }
+  .hero-badge span { font-size: .68rem; }
+  .hero-star { width: 82px; top: 78px; right: -22px; }
+  .hero-rings { width: 125px; right: -56px; }
+  .hero-para-flag { width: 76px; left: -10px; bottom: 4px; opacity: .62; }
+
+  /* Os três princípios viram uma faixa navegável em vez de três blocos enormes. */
+  .intro-grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    padding: 4px 8px 12px 2px;
+  }
+  .intro-grid::-webkit-scrollbar { display: none; }
+  .intro-card {
+    flex: 0 0 min(82vw, 305px);
+    min-height: 210px;
+    padding: 20px;
+    scroll-snap-align: center;
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+  .intro-card h3 { font-size: 2.55rem; }
+
+  /* Percurso da Home: fluxo natural, sem caixa artificialmente alta. */
+  .home-journey { padding: 64px 0 72px; }
+  .journey-heading { margin-bottom: 26px; }
+  .journey-heading h2 { font-size: clamp(2.7rem, 13vw, 4rem); }
+  .journey-board { min-height: 0; overflow: visible; }
+  .journey-steps { padding: 14px; }
+  .journey-steps::before { left: 39px; top: 28px; bottom: 28px; }
+  .journey-step,
+  .journey-step.step-1,
+  .journey-step.step-2,
+  .journey-step.step-3,
+  .journey-step.step-4 { min-height: 104px; }
+  .journey-step { grid-template-columns: 40px minmax(0,1fr) 18px; padding: 12px; gap: 10px; }
+  .journey-step > span { width: 36px; height: 36px; }
+  .journey-step strong { font-size: .98rem; }
+  .journey-step p { font-size: .78rem; line-height: 1.38; }
+
+  /* Instagram: carrossel horizontal, sem três fotos gigantes em sequência. */
+  .instagram-strip { padding: 18px 0 58px; overflow: visible; }
+  .social-grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    padding: 3px 8px 12px 2px;
+  }
+  .social-grid::-webkit-scrollbar { display: none; }
+  .social-card { flex: 0 0 min(82vw, 310px); min-height: 330px; scroll-snap-align: center; }
+  .social-card img { min-height: 330px; }
+
+  /* SOBRE */
+  .subhero { padding: 100px 14px 52px; gap: 18px; }
+  .subhero-copy h1, .contact-copy h1 { font-size: clamp(3rem, 14vw, 4.25rem); line-height: .9; }
+  .about-photo-stack { min-height: 390px; }
+  .about-photo { width: min(330px, 90%); padding: 8px; box-shadow: 7px 7px 0 var(--ink); }
+  .about-photo img { height: 365px; }
+  .paper-note { right: 0; bottom: 6%; padding: 11px 12px; font-size: .72rem; }
+  .about-story { padding: 58px 0; gap: 22px; }
+  .story-quote { min-height: 235px; padding: 26px 22px; box-shadow: 6px 6px 0 var(--ink); }
+  .story-quote > span { font-size: 7rem; }
+  .story-quote p { font-size: clamp(2.2rem, 11vw, 3rem); }
+  .mini-profile { margin-bottom: 54px; box-shadow: 6px 6px 0 var(--ink); }
+  .mini-profile-card { padding: 24px 20px; }
+  .mini-profile-card h2 { font-size: clamp(2.2rem, 10.7vw, 3.4rem); line-height: .92; }
+  .mini-profile-image { min-height: 300px; }
+  .mini-profile-image img { height: 300px; object-position: center 35%; }
+
+  /* AULAS — capacidades viram estações horizontais. */
+  .classes-hero-photo { width: min(340px, 92%); padding: 8px; box-shadow: 7px 7px 0 var(--ink); }
+  .classes-hero-photo img { height: 315px; object-position: center 48%; }
+  .classes-hero-photo span { left: 10px; bottom: 10px; font-size: .74rem; box-shadow: 3px 3px 0 var(--ink); }
+  .capacity-zone { padding-bottom: 68px; }
+  .capacity-track {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    padding: 5px 8px 14px 3px;
+  }
+  .capacity-track::-webkit-scrollbar { display: none; }
+  .capacity-track::before { display: none; }
+  .capacity-card { flex: 0 0 min(72vw, 270px); min-height: 160px; scroll-snap-align: center; }
+  .capacity-card > div { min-height: 160px; padding: 18px; box-shadow: 5px 5px 0 var(--ink); }
+  .capacity-card strong { font-size: clamp(2rem, 9vw, 2.7rem); }
+  .method-heading { margin-bottom: 26px; }
+  .activity-stations-v4 button { flex-basis: min(78vw, 270px); }
+  .activity-photo-v4, .activity-photo-v4 img { height: 280px; min-height: 280px; }
+  .activity-copy-v4 h3 { font-size: clamp(2.25rem, 10.5vw, 3.15rem); line-height: .92; }
+  .activity-copy-v4 p { font-size: .93rem; }
+  .activity-rule-v4 { font-size: .66rem; line-height: 1.4; }
+
+  /* PLANOS — herói menor e valores com leitura mais rápida. */
+  .plans-ambient { gap: 12px; }
+  .scoreboard { width: min(330px, 94%); min-height: 205px; padding: 24px 16px; box-shadow: 7px 7px 0 var(--blue); }
+  .scoreboard span { font-size: clamp(4rem, 20vw, 5.5rem); }
+  .scoreboard small { font-size: .7rem; }
+  .plans-zone { padding-bottom: 58px; }
+  .plan-finder-head h2 { font-size: clamp(2.65rem, 12vw, 3.8rem); }
+  .plan-choices { gap: 12px; }
+  .plan-result-copy { padding: 19px; }
+  .plan-result-title h3 { font-size: clamp(2.8rem, 13.5vw, 3.8rem); }
+  .plan-price-value > span { font-size: 1.25rem; }
+  .plan-price-value > strong { font-size: clamp(2.65rem, 11.6vw, 3.7rem); }
+  .plan-rules { gap: 12px; margin-bottom: 50px; }
+
+  /* CONTATO — conteúdo primeiro; ilustração vira encerramento visual, não barreira inicial. */
+  .contact-page { padding: 100px 14px 44px; gap: 26px; }
+  .contact-copy { order: 1; }
+  .contact-copy > div > p { font-size: 1rem; line-height: 1.5; }
+  .contact-actions { margin-top: 24px; gap: 10px; }
+  .contact-button { padding: 14px 44px 14px 14px; box-shadow: 4px 4px 0 var(--ink); }
+  .contact-button strong { font-size: 1.35rem; line-height: 1.05; }
+  .contact-visual { order: 2; min-height: 340px; }
+  .contact-visual > img { width: min(335px, 92%); max-height: 350px; }
+  .contact-sunburst { width: 280px; height: 280px; }
+  .contact-signature { left: 4%; bottom: 3%; padding: 10px 12px; box-shadow: 4px 4px 0 var(--ink); }
+  .contact-signature strong { font-size: 1.3rem; }
+  .contact-signature span { font-size: .68rem; }
+  .contact-rings { width: 145px; left: -65px; }
+
+  /* Os dois atalhos fixos ficam nos cantos e deixam de cobrir o texto. */
+  .quick-assistant { left: 12px; right: auto; bottom: 12px; }
+  .assistant-toggle { width: 48px; height: 48px; padding: 7px; justify-content: center; }
+  .assistant-toggle strong { display: none; }
+  .assistant-panel { left: 12px; right: 12px; bottom: 74px; max-height: 70vh; }
+  .floating-whatsapp { right: 12px; bottom: 12px; }
+
+  /* Ponte entre páginas — desenhada para o polegar e para leitura em uma tela. */
+  .page-bridge-wrap { width: calc(100% - 24px); margin-top: 26px; margin-bottom: 54px; }
+  .page-bridge {
+    min-height: 0;
+    grid-template-columns: 1fr auto;
+    gap: 15px;
+    padding: 22px 18px 20px;
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+  .page-bridge-meta { grid-column: 1 / -1; font-size: .66rem; gap: 12px; align-items: flex-start; }
+  .page-bridge-meta b { max-width: 170px; text-align: right; }
+  .page-bridge-copy { grid-column: 1 / -1; }
+  .page-bridge-copy .kicker { font-size: .68rem; }
+  .page-bridge-copy h2 { font-size: clamp(2.65rem, 12.8vw, 3.8rem); }
+  .page-bridge-copy p { margin-top: 12px; font-size: .9rem; line-height: 1.48; max-width: calc(100% - 58px); }
+  .page-bridge-arrow { grid-column: 2; grid-row: 3; width: 54px; height: 54px; font-size: 1.65rem; box-shadow: 3px 3px 0 var(--ink); }
+  .page-bridge-flag { width: 66px; right: 14px; top: auto; bottom: 82px; opacity: .15; }
+  .page-bridge-final { display: block; }
+  .page-bridge-final .page-bridge-copy p { max-width: 100%; }
+  .page-bridge-final .page-bridge-actions { margin-top: 22px; display: grid; gap: 16px; }
+  .page-bridge-final .page-bridge-actions .button { width: 100%; }
+  .page-bridge-final .page-bridge-flag { bottom: 26px; right: 20px; }
+
+  /* Footer menor e sem competição com os atalhos fixos. */
+  .site-footer { width: calc(100% - 24px); margin: 28px auto 76px; padding: 22px 0 26px; gap: 18px; }
+  .footer-links { gap: 12px 16px; }
+  .footer-links a { min-height: 34px; display: inline-flex; align-items: center; }
+}
+
+@media (max-width: 390px) {
+  .hero-title { font-size: clamp(2.75rem, 14.5vw, 3.65rem) !important; }
+  .photo-frame-main img { height: 340px; }
+  .hero-visual { min-height: 365px; }
+  .subhero-copy h1, .contact-copy h1 { font-size: clamp(2.72rem, 13.5vw, 3.65rem); }
+  .activity-photo-v4, .activity-photo-v4 img { height: 255px; min-height: 255px; }
+  .activity-copy-v4 { padding: 25px 18px 23px; }
+  .activity-copy-v4 h3 { font-size: clamp(2.05rem, 10vw, 2.8rem); }
+  .choice-row button { font-size: .78rem; }
+  .plan-price-value > strong { font-size: clamp(2.45rem, 11.3vw, 3.2rem); }
+  .page-bridge-copy h2 { font-size: clamp(2.45rem, 12vw, 3.35rem); }
+  .page-bridge-copy p { max-width: 100%; }
+  .page-bridge-flag { display: none; }
+}

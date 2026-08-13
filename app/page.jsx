@@ -3,6 +3,7 @@ import HeroMotion from '@/components/HeroMotion';
 import Reveal from '@/components/Reveal';
 import InstagramStrip from '@/components/InstagramStrip';
 import HomeJourney from '@/components/HomeJourney';
+import PageBridge from '@/components/PageBridge';
 
 export default function HomePage() {
   return (
@@ -72,6 +73,15 @@ export default function HomePage() {
       <HomeJourney />
 
       <InstagramStrip />
+
+      <PageBridge
+        step="01"
+        nextStep="02"
+        title="Conheça a Bárbara"
+        copy="Formação, atuação e a proposta por trás do trabalho de Personal Kids."
+        href="/sobre"
+        accent="blue"
+      />
     </>
   );
 }
